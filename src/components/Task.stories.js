@@ -1,6 +1,7 @@
 import React from 'react';
 import { Task } from './Task';
 
+//1- Isolare il componente da testare
 export default {
   component: Task,
   title: 'Task',
@@ -19,5 +20,24 @@ Default.args = {
     id: '1',
     title: 'Buy milk',
     state: 'TASK_INBOX',
+  },
+};
+
+//2- Scrivere casi di test
+export const Pinned = Template.bind({});
+Pinned.args = {
+  task: {
+    id: '2',
+    title: 'QA dropdown',
+    state: 'TASK_PINNED',
+  },
+};
+
+export const Archived = Template.bind({});
+Archived.args = {
+  task: {
+    id: '3',
+    title: 'Write schema for account menu',
+    state: 'TASK_ARCHIVED',
   },
 };
