@@ -26,3 +26,24 @@ Default.args = {
     { id: '6', state: 'TASK_INBOX', title: 'Draft monthly blog to customers' },
   ],
 };
+
+//Aggiungere test case agli argomenti
+export const WithPinnedTasks = Template.bind({});
+WithPinnedTasks.args = {
+  tasks: [
+    { id: '6', title: 'Draft monthly blog to customers', state: 'TASK_PINNED' },
+    ...Default.args.tasks.slice(0, 5),
+  ],
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  tasks: [],
+  loading: true,
+};
+
+export const Empty = Template.bind({});
+Empty.args = {
+  ...Loading.args,
+  loading: false,
+};
