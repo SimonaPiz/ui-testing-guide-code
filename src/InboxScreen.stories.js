@@ -40,7 +40,7 @@ Error.parameters = {
 };
 
 //Test di interazione con testing-library e jest
-//Cerchiamo il task "Export logo"
+  //Cerchiamo il task "Export logo"
 export const PinTask = Template.bind({});
 PinTask.parameters = Default.parameters;
 PinTask.play = async ({ canvasElement }) => {
@@ -59,4 +59,32 @@ PinTask.play = async ({ canvasElement }) => {
   // Check that the pin button is now a unpin button
   const unpinButton = within(itemToPin).getByRole('button', { name: 'unpin' });
   await expect(unpinButton).toBeInTheDocument();
+};
+
+  //funzionalità di archiviazione
+export const ArchiveTask = Template.bind({});
+ArchiveTask.parameters = Default.parameters;
+ArchiveTask.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const getTask = (name) => canvas.findByRole('listitem', { name });
+
+  const itemToArchive = await getTask('QA dropdown');
+  const archiveCheckbox = await findByRole(itemToArchive, 'checkbox');
+  await userEvent.click(archiveCheckbox);
+
+  await expect(archiveCheckbox.checked).toBe(true);
+};
+
+  //modifica delle attività
+export const EditTask = Template.bind({});
+EditTask.parameters = Default.parameters;
+EditTask.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const getTask = (name) => canvas.findByRole('listitem', { name });
+
+  const itemToEdit = await getTask('Fix bug in input error state');
+  const taskInput = await findByRole(itemToEdit, 'textbox');
+
+  userEvent.type(taskInput, ' and disabled state');
+  await expect(taskInput.value).toBe('Fix bug in input error state and disabled state');
 };
