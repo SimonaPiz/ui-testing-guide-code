@@ -17,8 +17,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
-    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "test-storybook": "test-storybook",
     "eject": "react-scripts eject",
@@ -70,6 +70,7 @@
     "@storybook/testing-library": "^0.0.13",
     "axe-playwright": "^1.1.11",
     "chromatic": "^6.7.1",
+    "cypress": "^10.3.1",
     "msw": "^0.44.2",
     "msw-storybook-addon": "^1.6.3"
   },
